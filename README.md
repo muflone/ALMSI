@@ -19,6 +19,11 @@ WARNING !!!
 THIS SCRIPT WILL WIPE EVERY DATA IN THE REMOTE SYSTEM,
 REINSTALLING ARCH LINUX UPON YOUR CURRENTLY INSTALLED OS.
 
+It uses the external script vps2arch ( https://github.com/drizzt/vps2arch ) to
+execute the real installation.
+
+The rest of te process setup the network and the SSH keys.
+
 System Requirements
 -------------------
 
@@ -27,4 +32,4 @@ System Requirements
 Usage
 -----
 
-sh ALMSI.sh <ip address> <hostname> 1
+    sh ALMSI.sh <ip address> <hostname> 1
