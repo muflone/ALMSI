@@ -49,7 +49,8 @@ do_instructions()
 do_usage()
 {
     # Show command usage
-    echo not enough arguments:
+    echo "not enough arguments:"
+    echo
     do_instructions
 }
 
