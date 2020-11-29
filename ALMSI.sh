@@ -34,7 +34,6 @@ _STEP="${3}"
 
 # Customized data
 _SSH_KEY_DATA="AAAAB3NzaC1yc2EAAAADAQABAAABAQDI6qxAMWbP9lQMlv9V0jTocalOQvtKKptOB5ObfV4lmBZzm4ra9fqawdSvpGlJzpe/KqPbUBadarmoCFJB+jphTMXTat3iEC2+B0KbhFs0z8dLTlAd8p3yLMbLh8jDlbUkdWzGWWCgCYOvIvnbSX7zLIN4scEZCcyZTuT4PNUAd3ixogFECGu8+jJRKXaa2DpQQXL1NpaCdTC/nwxCwYBLhk8T01fLSaUIkEKoVMJtTFkoFsrX1dNIn9TkjWvqdSBKsHS5ZEdhLYkIjwOyp0cTEGdOdyeUWFyHIlxJTx2+g1ZiDjH+4zGEfhRqGUiscmxfNuTj9PVo9RWzu51ctFbv"
-_SSH_KEY_NAME="Muflone per SSH"
 
 do_instructions()
 {
@@ -73,7 +72,7 @@ do_store_ssh_key()
     ssh -o PubkeyAuthentication=no -o StrictHostKeyChecking=no "root@${_IP_ADDRESS}" "
         mkdir -p ~/.ssh
         chmod u=rwx,go= ~/.ssh
-        echo \"ssh-rsa ${_SSH_KEY_DATA} ${_SSH_KEY_NAME}\" >> ~/.ssh/authorized_keys
+        echo \"ssh-rsa ${_SSH_KEY_DATA}\" >> ~/.ssh/authorized_keys
         chmod u=rw,go= ~/.ssh/authorized_keys
         # Restore SELinux permissions on .ssh
         if type restorecon >/dev/null 2>&1; then
@@ -149,7 +148,7 @@ do_system_setup()
     # Save ssh key
     mkdir -p ~/.ssh
     chmod u=rwx,go= ~/.ssh
-    echo "ssh-rsa ${_SSH_KEY_DATA} ${_SSH_KEY_NAME}" >> ~/.ssh/authorized_keys
+    echo "ssh-rsa ${_SSH_KEY_DATA}" >> ~/.ssh/authorized_keys
     chmod u=rw,go= ~/.ssh/authorized_keys
     # Restore SELinux permissions on .ssh
     if type restorecon >/dev/null 2>&1; then
