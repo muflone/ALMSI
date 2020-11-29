@@ -173,7 +173,7 @@ do_system_setup()
 
 do_cleanup()
 {
-    yes | pacman -Scc || true
+    pacman --noconfirm -Scc
 }
 
 #
