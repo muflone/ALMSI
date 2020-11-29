@@ -173,7 +173,8 @@ do_system_setup()
 
 do_cleanup()
 {
-    pacman --noconfirm -Scc
+    # Pacman cache cleanup (cannot use paccache/pacman for random lock-ups)
+    find /var/cache/pacman/pkg -type f -name '*.zst' -delete
 }
 
 #
