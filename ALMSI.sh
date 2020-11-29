@@ -44,7 +44,6 @@ do_instructions()
     echo "  0  Show this help"
     echo "  1  Connect to the remote system and go to the next step"
     echo "  2  Install the remote system (wipes everything)"
-    exit 1
 }
 
 do_usage()
@@ -52,7 +51,6 @@ do_usage()
     # Show command usage
     echo not enough arguments:
     do_instructions
-    exit 1
 }
 
 do_clear_ssh_host()
@@ -189,6 +187,7 @@ if [ $# -lt 3 ]
 then
   # Show usage
   do_usage
+  exit 2
 fi
 
 # Set step value with default value
@@ -197,6 +196,7 @@ _STEP="${_STEP:=0}"
 case ${_STEP} in
   0)
     do_instructions
+    exit 1
     ;;
   1)
     # Enable SSH access using SSH key
@@ -230,9 +230,13 @@ case ${_STEP} in
     echo "saving all data and rebooting the system..."
     sync
     nohup reboot -f &> /dev/null < /dev/null &
-    exit
+    exit 0
+    ;;
+  *)
+    # This step is not used
+    do_usage
+    exit 3
     ;;
 esac
 
-exit 0
-
+exit 4
